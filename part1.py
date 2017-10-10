@@ -12,6 +12,7 @@ class MyNearestNeighborClassifier:
         self.presion = 0
         self.recall = 0
         self.F = 0
+        self.acc = 0
     
     def fit(self, X_train, y_train):
         if self.n_neighbor < 0:
@@ -50,6 +51,7 @@ class MyNearestNeighborClassifier:
         self.recall = tp / (tp + fn)
         self.F = 2 * (self.precision * self.recall) / (self.precision + self.recall)
         self.acc = count[0]/(count[0] + count[1])
+
         
     def predict(self, X_test, y_test):
         self.predictions = []
@@ -69,33 +71,9 @@ class MyNearestNeighborClassifier:
         return np.array(self.predictions)
 
 
-# In[5]:
-
-from sklearn import datasets
-iris = datasets.load_iris()
-iris_X = iris.data
-iris_y = iris.target
-
-np.random.seed(0)
-indices = np.random.permutation(len(iris_X))
-iris_X_train = iris_X[indices[:-10]]
-iris_y_train = iris_y[indices[:-10]]
-iris_X_test  = iris_X[indices[-10:]]
-iris_y_test  = iris_y[indices[-10:]]
-
-knn = MyNearestNeighborClassifier()
-knn.fit(iris_X_train, iris_y_train) 
-
-knn.predict(iris_X_test, iris_y_test)
 
 
-# In[11]:
 
-knn.accuracy(iris_y_test)
-print("accuracy=", knn.acc)
-
-
-# In[ ]:
 
 
 

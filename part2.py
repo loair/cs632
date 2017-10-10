@@ -1,8 +1,6 @@
 
 # coding: utf-8
 
-# In[17]:
-
 from os import listdir
 import re
 import json
@@ -25,9 +23,6 @@ BAG_OF_WORDS = np.array(bagofwords)
 file = file_list[50]
 y_data = np.loadtxt(PATH + "/" + file).astype(np.int64)
 
-
-# In[18]:
-
 def count_words(file):
     words = {}
     for k in BAG_OF_WORDS:
@@ -38,6 +33,11 @@ def count_words(file):
             words[word] = words.get(word) + 1
     return list(words.values())
 
+def printResults(knn):
+    print("precision:\t", knn.precision)
+    print("recall:\t\t", knn.recall)
+    print("F-measure:\t", knn.F)
+    print("accuracy:\t", knn.acc)
 
 # In[19]:
 
@@ -46,9 +46,6 @@ X_data = np.array(count_words(file_list[0]))
 for i in range(1,50):
     words = count_words(file_list[i])
     X_data = np.row_stack((X_data, words))
-
-
-# In[20]:
 
 np.random.seed(0)
 indices = np.random.permutation(len(X_data))
@@ -65,18 +62,5 @@ knn.predict(X_test, y_test)
 # In[21]:
 
 knn.accuracy(y_test)
-print("precision:\t", knn.precision)
-print("recall:\t\t", knn.recall)
-print("F-measure:\t", knn.F)
-print("accuracy:\t", knn.acc)
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
+printResults(knn)
 
