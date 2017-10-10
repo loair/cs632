@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[6]:
+# In[17]:
 
 from os import listdir
 import re
@@ -20,13 +20,13 @@ with open("bagofwords.txt") as f:
     string = string.replace("\n", ",")
     bagofwords = re.split(",", string)
 
-
+#STOP_WORDS = np.array(['','a', 'an', 'and', 'are', 'as', 'be', 'by', 'for', 'if', 'in', 'is', 'it', 'of', 'or', 'py', 'rst', 'that', 'the', 'to', 'with',])
 BAG_OF_WORDS = np.array(bagofwords)
 file = file_list[50]
 y_data = np.loadtxt(PATH + "/" + file).astype(np.int64)
 
 
-# In[7]:
+# In[18]:
 
 def count_words(file):
     words = {}
@@ -39,7 +39,7 @@ def count_words(file):
     return list(words.values())
 
 
-# In[8]:
+# In[19]:
 
 X_data = np.array(count_words(file_list[0]))
 
@@ -48,7 +48,7 @@ for i in range(1,50):
     X_data = np.row_stack((X_data, words))
 
 
-# In[9]:
+# In[20]:
 
 np.random.seed(0)
 indices = np.random.permutation(len(X_data))
@@ -62,11 +62,21 @@ knn.fit(X_train, y_train)
 knn.predict(X_test, y_test)
 
 
-# In[10]:
+# In[21]:
 
 knn.accuracy(y_test)
-print(knn.precision)
-print(knn.recall)
-print(knn.F)
-print(knn.acc)
+print("precision:\t", knn.precision)
+print("recall:\t\t", knn.recall)
+print("F-measure:\t", knn.F)
+print("accuracy:\t", knn.acc)
+
+
+# In[ ]:
+
+
+
+
+# In[ ]:
+
+
 
