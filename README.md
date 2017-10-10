@@ -28,3 +28,4 @@ Part 2
 3. Yes. There are two reasons I think causing the problem. 
    1. The parameter K are responsible for misclassifying since it may be too small or too big.
    2. The featur selection - the choice of Bag of Words is related with it.
+   3. Data volume is not big enough to make the machine learn the pattern
