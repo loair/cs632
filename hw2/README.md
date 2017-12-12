@@ -48,4 +48,6 @@ Trainable params: 210,113
 Non-trainable params: 0
 _________________________________________________________________
 
-The epohcs is set equal to 40, and the best result of viladation accuracy achieved here is around 75%. The prediction accuracy is 
+The epohcs is set equal to 40, and the best result of viladation accuracy achieved here is around 75%. The prediction accuracy is 74.8%. 
+
+The performance might be increased by data augmentaion, which will be implemented in the future.
